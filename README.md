@@ -1,4 +1,4 @@
-![Titre Nginx](images/nginx-title.png)
+![Titre Nginx](Images/Nginx-1024x425.jpg)
 
 # Projet Nginx - Serveur Web
 
