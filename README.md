@@ -1,3 +1,5 @@
+![Titre Nginx](images/nginx-title.png)
+
 # Projet Nginx - Serveur Web
 
 Objectif : Installer et configurer un serveur web Nginx, créer un site web statique et configurer un Virtual Host (Server Block).
