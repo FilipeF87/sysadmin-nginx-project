@@ -29,7 +29,9 @@ cd workflow/nginx
 
 Création de la page HTML :
 ```bash
-sudo nano /var/www/monprojet/index.html
+mkdir -p pageweb/index.html
+cd pageweb
+nano index.html
 ```
 
 Contenu du fichier index.html :
