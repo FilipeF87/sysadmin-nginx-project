@@ -14,11 +14,18 @@ Vérifier le statut :
 ```bash
 sudo systemctl status nginx
 ```
+Configurer le pare-feu (facultatif mais recommandé)
+
+```bash
+sudo ufw allow 'Nginx HTTP'
+sudo ufw status
+```
 
 Création du dossier du site :
 ```bash
-sudo mkdir -p workflow/nginx
-cd workflow/nginx
+sudo mkdir -p /var/www/monsite/html
+sudo chown -R $USER:$USER /var/www/monsite/html
+sudo chmod -R 755 /var/www/monsite
 ```
 <p>
   <span style="color:red; font-weight:bold;">⚠️ Attention :</span>
@@ -29,9 +36,7 @@ cd workflow/nginx
 
 Création de la page HTML :
 ```bash
-mkdir pageweb
-cd pageweb
-nano index.html
+nano /var/www/monsite/html/index.html
 ```
 
 Contenu du fichier index.html :
@@ -42,38 +47,40 @@ Contenu du fichier index.html :
     <title>Mon site Nginx</title>
 </head>
 <body>
-    <h1>Bienvenue sur mon site Nginx</h1>
-    <p>Projet Administrateur système et réseau</p>
+    <h1>Bienvenue sur mon site web !</h1>
 </body>
 </html>
 ```
+Enregistrez avec CTRL+O, puis quittez avec CTRL+X.
 
-Configuration du Virtual Host (Server Block) :
+Créer un fichier de configuration Nginx :
+Nginx utilise des fichiers de configuration pour chaque site dans /etc/nginx/sites-available/
+
 ```bash
-sudo nano /etc/nginx/sites-available/monprojet
+sudo nano /etc/nginx/sites-available/monsite
 ```
+Mettez ceci dedans (remplacez monsite par votre nom de domaine si vous en avez un)
 
 Contenu du fichier monprojet :
-```nginx
+
+```bash
 server {
     listen 80;
-    server_name monprojet.local;
+    server_name monsite.com www.monsite.com;
 
-    root /var/www/monprojet;
+    root /var/www/monsite/html;
     index index.html;
 
     location / {
         try_files $uri $uri/ =404;
     }
-
-    access_log /var/log/nginx/monprojet_access.log;
-    error_log /var/log/nginx/monprojet_error.log;
 }
 ```
 
 Activer le site :
+Créez un lien symbolique vers sites-enabled :
 ```bash
-sudo ln -s /etc/nginx/sites-available/monprojet /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/monsite /etc/nginx/sites-enabled/
 ```
 
 Tester la configuration :
@@ -91,12 +98,26 @@ Ajouter l'entrée DNS locale (hosts) :
 sudo nano /etc/hosts
 ```
 
-Ajouter la ligne :
+AjTester le site :
 ```
-127.0.0.1 monprojet.local
+http://votre_ip
+```
+(Bonus)
+
+Pour démarrer, arrêter ou redémarrer Nginx :
+```bash
+sudo systemctl start nginx
+sudo systemctl stop nginx
+sudo systemctl restart nginx
+```
+Activer HTTPS avec Let's Encrypt
+Installer Certbot :
+```bash
+sudo apt install certbot python3-certbot-nginx -y
 ```
 
-Tester dans le navigateur : http://monprojet.local
+```bash
+sudo certbot --nginx -d monsite.com -d www.monsite.com
 
-Résultat attendu : tu dois voir ta page web avec le texte "Bienvenue sur mon site Nginx".
-
+```
+✅ Le site Nginx est maintenant opérationnel.
