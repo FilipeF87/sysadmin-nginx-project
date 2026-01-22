@@ -18,6 +18,7 @@ sudo systemctl status nginx
 Création du dossier du site :
 ```bash
 sudo mkdir -p workflow/nginx
+cd workflow/nginx
 ```
 <p>
   <span style="color:red; font-weight:bold;">⚠️ Attention :</span>
