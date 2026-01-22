@@ -19,7 +19,9 @@ Création du dossier du site :
 ```bash
 sudo mkdir -p workflow/nginx
 ```
-Attention : Le dossier peut être modifié, mais une mauvaise configuration des permissions peut provoquer des erreurs d’accès.
+Attention : le dossier peut être modifié. Toutefois, si le dossier parent appartient à root, 
+une mauvaise gestion des permissions peut entraîner des erreurs d’accès.
+Assurez-vous que l’utilisateur courant dispose des droits nécessaires.
 
 Création de la page HTML :
 ```bash
