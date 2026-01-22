@@ -19,6 +19,7 @@ Création du dossier du site :
 ```bash
 sudo mkdir -p workflow/nginx
 ```
+Attention : Le dossier peut être modifié, mais une mauvaise configuration des permissions peut provoquer des erreurs d’accès.
 
 Création de la page HTML :
 ```bash
