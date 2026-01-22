@@ -29,7 +29,7 @@ cd workflow/nginx
 
 Création de la page HTML :
 ```bash
-mkdir -p pageweb/index.html
+mkdir pageweb
 cd pageweb
 nano index.html
 ```
