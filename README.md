@@ -6,7 +6,7 @@ Objectif : Installer et configurer un serveur web Nginx, créer un site web stat
 
 Installation de Nginx :
 ```bash
-sudo apt update
+sudo apt update && sudo apt upgrade -y
 sudo apt install nginx -y
 ```
 
@@ -17,7 +17,7 @@ sudo systemctl status nginx
 
 Création du dossier du site :
 ```bash
-sudo mkdir -p /var/www/monprojet
+sudo mkdir -p workflow/nginx
 ```
 
 Création de la page HTML :
