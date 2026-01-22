@@ -98,7 +98,7 @@ Ajouter l'entrée DNS locale (hosts) :
 sudo nano /etc/hosts
 ```
 
-AjTester le site :
+Tester le site :
 ```
 http://votre_ip
 ```
