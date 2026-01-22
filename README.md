@@ -14,7 +14,7 @@ Vérifier le statut :
 ```bash
 sudo systemctl status nginx
 ```
-Attention : le dossier peut être modifié, mais une mauvaise configuration des permissions peut provoquer des erreurs d’accès.
+Attention : Le dossier peut être modifié, mais une mauvaise configuration des permissions peut provoquer des erreurs d’accès.
 Création du dossier du site :
 ```bash
 sudo mkdir -p workflow/nginx
